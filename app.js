@@ -8,10 +8,20 @@ app.use(express.static("public"));
 
 const port = 3000;
 
-var cont = "i go to office , i play golf and i eat , code sleep and repeat ";
+var home = "i go to office , i play golf and i eat , code sleep and repeat ";
+var about = "this is about page";
+var contact = "this is contact page";
 
 app.get("/", (req, res) => {
-  res.render("index", { content: cont });
+  res.render("index", { content: home });
+});
+
+app.get("/about", (req, res) => {
+  res.render("about", { aboutContent: about });
+});
+
+app.get("/contact", (req, res) => {
+  res.render("contact", { contactContent: contact });
 });
 
 app.listen(port, () => {
