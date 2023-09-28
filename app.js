@@ -24,6 +24,10 @@ app.get("/contact", (req, res) => {
   res.render("contact", { contactContent: contact });
 });
 
+app.get("/compose", (req, res) => {
+  res.render("compose", );
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
