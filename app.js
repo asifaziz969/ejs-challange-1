@@ -25,10 +25,14 @@ app.get("/contact", (req, res) => {
 });
 
 app.get("/compose", (req, res) => {
-  res.render("compose", );
+  res.render("compose");
 });
 app.post("/compose", (req, res) => {
   console.log(req.body.postTitle);
+  var post = {
+    title: req.body.postTitle,
+    content: req.body.postBody,
+  };
 });
 
 app.listen(port, () => {
