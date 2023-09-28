@@ -12,8 +12,14 @@ var home = "i go to office , i play golf and i eat , code sleep and repeat ";
 var about = "this is about page";
 var contact = "this is contact page";
 
+var posts = [];
+
 app.get("/", (req, res) => {
-  res.render("index", { content: home });
+  res.render("index", {
+    content: home,
+    posts: posts,
+  });
+ 
 });
 
 app.get("/about", (req, res) => {
@@ -27,12 +33,16 @@ app.get("/contact", (req, res) => {
 app.get("/compose", (req, res) => {
   res.render("compose");
 });
+
 app.post("/compose", (req, res) => {
   console.log(req.body.postTitle);
   var post = {
     title: req.body.postTitle,
     content: req.body.postBody,
   };
+
+  posts.push(post);
+  res.redirect("/");
 });
 
 app.listen(port, () => {
