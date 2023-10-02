@@ -35,7 +35,7 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
-  console.log(req.body.postTitle);
+  
   var post = {
     title: req.body.postTitle,
     content: req.body.postBody,
