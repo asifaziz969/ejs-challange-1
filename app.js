@@ -45,6 +45,10 @@ app.post("/compose", (req, res) => {
   res.redirect("/");
 });
 
+app.get("/posts/:testing", (req, res) =>{
+  console.log(req.params.hello)
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
