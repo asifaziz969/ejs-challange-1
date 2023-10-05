@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyparser = require("body-parser");
-const _ = require("lodash")
+const _ = require("lodash");
 const app = express();
 const ejs = require("ejs");
 app.set("view engine", "ejs");
@@ -20,7 +20,6 @@ app.get("/", (req, res) => {
     content: home,
     posts: posts,
   });
- 
 });
 
 app.get("/about", (req, res) => {
@@ -36,7 +35,6 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
-  
   var post = {
     title: req.body.postTitle,
     content: req.body.postBody,
@@ -46,20 +44,19 @@ app.post("/compose", (req, res) => {
   res.redirect("/");
 });
 
-app.get("/posts/:postName", function(req, res){ 
-  const requestedTitle =_.lowerCase(req.params.postName) 
+app.get("/posts/:postName", function (req, res) {
+  const requestedTitle = _.lowerCase(req.params.postName);
 
-posts.forEach(function(post){
-  const storedTitle = _.lowerCase(post.title);
-  
-  if(storedTitle === requestedTitle)
-  {
-    console.log("match found");
-}
-else {
- console.log("match not found")
-}
-})
+  posts.forEach(function (post) {
+    const storedTitle = _.lowerCase(post.title);
+
+    if (storedTitle === requestedTitle) {
+      res.render("post", {
+        title: post.title,
+         content:post.content
+      });
+    }
+  });
 });
 
 app.listen(port, () => {
