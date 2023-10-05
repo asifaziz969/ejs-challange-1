@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyparser = require("body-parser");
+const _ = require("lodash")
 const app = express();
 const ejs = require("ejs");
 app.set("view engine", "ejs");
@@ -46,10 +47,10 @@ app.post("/compose", (req, res) => {
 });
 
 app.get("/posts/:postName", function(req, res){ 
-  const requestedTitle = req.params.postName;
+  const requestedTitle =_.lowerCase(req.params.postName) 
 
 posts.forEach(function(post){
-  const storedTitle = post.title;
+  const storedTitle = _.lowerCase(post.title);
   
   if(storedTitle === requestedTitle)
   {
